@@ -27,7 +27,6 @@ router.put("/api/update/:id", function(req, res) {
   var condition = "id = " + req.params.id;
   burger.update({devoured: true}, condition, function(result) {
     res.redirect("/");
-
   });
 
 });

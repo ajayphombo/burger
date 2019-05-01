@@ -1,38 +1,55 @@
 
-<div>
-    <h1>eat the burger</h1>
+<div class= "jumbotron text-center border-bottom bg-warning">
+    <h1>BBB</h1>
 </div>
 
-<div>
-    <h4> Create a burger you want?</h4>
+<div class="row">
+    <div class="col-lg-1"></div>
 
-    <form action="/api/burger" method="POST">
-        <input type="text" name="burger_name" placeholder="insert burger name"></input>
-            <button type="submit">add</button>
-    </form>
-</div>
+    <div class="col-lg-4">
 
-<div>
+            <h4>Burgers You Can Eat</h4>
+            {{#each burger}}{{#unless this.devoured}}
 
-    <h4>burgers you can eat</h4>
-    {{#each burger}}{{#unless this.devoured}}
+            <form action="/api/update/{{this.id}}?_method=PUT" method= "POST" >
+                <input type="hidden" name="devoured" value="true">
 
-    <form action="/api/update/{{this.id}}?_method=PUT" method= "POST" >
-        <input type="hidden" name="devoured" value="true">
-        <li>{{this.burger_name}}</li>
-            <button data-id="{{id}}" data-eat="{{devoured}}" type="submit">devour it</button>
-
-    </form>
-    {{/unless}}{{/each}}
-</div>
-
-<div>
-<h4>
-    devoured ones
-    {{#each burger}}{{#if this.devoured}}
-    <div>
-        <li>{{this.burger_name}}</li>
+                <ul class="list-group list-group-flush" >
+                    <li class="list-group-item list-group-item-light " >{{this.burger_name}}</li>
+                    <button data-id="{{id}}" data-eat="{{devoured}}" type="submit" class="btn btn-danger btn-sm" >devour it</button>
+                </ul>
+                
+            </form>
+            {{/unless}}{{/each}}
     </div>
-    {{/if}}{{/each}}
-</h4>
+    <div class="col-lg-3"></div>
+     <div class="col-lg-2">
+        <h4 > Create Your Own Burger</h4>
+
+            <form action="/api/burger" method="POST">
+                <input type="text" name="burger_name" placeholder="Add a new Burger"></input>
+                    <button type="submit" class="btn btn-primary" >add</button>
+            </form>
+    </div>
+      <div class="col-lg-1"></div>
+
+</div>
+
+<br>
+<br>
+<div class="row">
+    <div class="col-lg-1"></div>
+
+    <div class="col-lg-4">
+         <h4>Devoured Burgers</h4>
+            {{#each burger}}{{#if this.devoured}}
+            <div>
+                <ul class="list-group list-group-flush " >
+                    <li class="list-group-item list-group-item-light ">{{this.burger_name}}</li>
+                </ul>
+            </div>
+            {{/if}}{{/each}}
+
+    </div>
+   
 </div>
