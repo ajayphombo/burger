@@ -1,5 +1,4 @@
-
-<div class= "jumbotron text-center border-bottom bg-warning">
+<div class="jumbotron text-center border-bottom bg-warning">
     <h1>BBB</h1>
 </div>
 
@@ -8,30 +7,31 @@
 
     <div class="col-lg-4">
 
-            <h4>Burgers You Can Eat</h4>
-            {{#each burger}}{{#unless this.devoured}}
+        <h4>Burgers You Can Eat</h4>
+        {{#each burger}}{{#unless this.devoured}}
 
-            <form action="/api/update/{{this.id}}?_method=PUT" method= "POST" >
-                <input type="hidden" name="devoured" value="true">
+        <form action="/api/update/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="true">
 
-                <ul class="list-group list-group-flush" >
-                    <li class="list-group-item list-group-item-light " >{{this.burger_name}}</li>
-                    <button data-id="{{id}}" data-eat="{{devoured}}" type="submit" class="btn btn-danger btn-sm" >devour it</button>
-                </ul>
-                
-            </form>
-            {{/unless}}{{/each}}
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-light ">{{this.burger_name}}</li>
+                <button data-id="{{id}}" data-eat="{{devoured}}" type="submit" class="btn btn-danger btn-sm">devour
+                    it</button>
+            </ul>
+
+        </form>
+        {{/unless}}{{/each}}
     </div>
     <div class="col-lg-3"></div>
-     <div class="col-lg-2">
-        <h4 > Create Your Own Burger</h4>
+    <div class="col-lg-2">
+        <h4> Create Your Own Burger</h4>
 
-            <form action="/api/burger" method="POST">
-                <input type="text" name="burger_name" placeholder="Add a new Burger"></input>
-                    <button type="submit" class="btn btn-primary" >add</button>
-            </form>
+        <form action="/api/burger" method="POST">
+            <input type="text" name="burger_name" placeholder="Add a new Burger"></input>
+            <button type="submit" class="btn btn-primary">add</button>
+        </form>
     </div>
-      <div class="col-lg-1"></div>
+    <div class="col-lg-1"></div>
 
 </div>
 
@@ -41,15 +41,15 @@
     <div class="col-lg-1"></div>
 
     <div class="col-lg-4">
-         <h4>Devoured Burgers</h4>
-            {{#each burger}}{{#if this.devoured}}
-            <div>
-                <ul class="list-group list-group-flush " >
-                    <li class="list-group-item list-group-item-light ">{{this.burger_name}}</li>
-                </ul>
-            </div>
-            {{/if}}{{/each}}
+        <h4>Devoured Burgers</h4>
+        {{#each burger}}{{#if this.devoured}}
+        <div>
+            <ul class="list-group list-group-flush ">
+                <li class="list-group-item list-group-item-light ">{{this.burger_name}}</li>
+            </ul>
+        </div>
+        {{/if}}{{/each}}
 
     </div>
-   
+
 </div>
